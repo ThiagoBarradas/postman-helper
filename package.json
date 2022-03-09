@@ -1,0 +1,30 @@
+{
+  "description": "Import node packages inside Postman.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matt-ball/postman-external-require.git"
+  },
+  "dependencies": {
+    "@adorsys/jwe-codec": "^1.0.2",
+    "@cisco-open/jose": "^2.1.0",
+    "@digitalbazaar/minimal-cipher": "^4.0.2",
+    "axios": "^0.26.0",
+    "babel-eslint": "^10.1.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babelify": "^10.0.0",
+    "body-parser": "^1.19.2",
+    "browserify": "^16.3.0",
+    "cryptojs": "^2.5.3",
+    "express": "^4.17.3",
+    "jose": "^4.6.0",
+    "jose-browser-runtime": "^4.6.0",
+    "jose-jwe": "^0.2.2",
+    "jose-jwe-jws": "^0.2.2",
+    "jose-skip-key-validation": "^3.19.0",
+    "jose-stream": "^0.7.0",
+    "jsrsasign": "^10.5.8",
+    "node-jose": "^2.1.0",
+    "ts-jose": "^4.6.0"
+  }
+}
