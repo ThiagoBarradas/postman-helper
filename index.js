@@ -80,4 +80,9 @@ app.post('/user-login', (request, response) => {
   }
 });
 
-app.listen(3000, () => console.log(`Running!`))
+function start() {
+  app.listen(3000, () => console.log(`Running!`));
+}
+  
+module.exports = {"browser": true};
+module.exports = start;

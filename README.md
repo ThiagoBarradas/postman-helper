@@ -8,7 +8,13 @@ Clone this repo.
 
 `npm i`
 
-`node index.js`
+`node cli.js`
+
+Or just
+
+`npm install --global postman-helper`
+
+`postman-helper`
 
 ## 2. Setup in Postman
 
