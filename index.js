@@ -80,6 +80,43 @@ app.post('/user-login', (request, response) => {
   }
 });
 
+app.post('/jwe-encrypt', (request, response) => {
+  try 
+  {
+    var payload = request.body.payload;
+    var url = request.body.keysUrl;
+
+    axios.get(url)
+    .then(keys => {
+      
+      var contentToEncrypt = JSON.stringify(payload);    
+      var buffer = Buffer.from(contentToEncrypt)
+
+      //changing alg/enc
+      keys.data.keys.forEach(function(item){
+        if (item.use=="enc") {
+          item.alg = "RSA-OAEP-256";
+        }
+      });
+
+      jose.JWK.asKeyStore(keys.data).
+      then(function(keystore) {
+        var key = keystore.all({ use: 'enc' });
+        jose.JWE.createEncrypt({ format: 'compact', contentAlg: "A256GCM" }, key)
+          .update(buffer)
+          .final()
+          .then((encryptedContent) => {  
+            var data = { jwe: encryptedContent, payload: payload };
+            response.json(data);
+          });       
+      });
+    });
+  } 
+  catch (exception) {
+    response.send('Something went wrong!')
+  }
+});
+
 function start() {
   app.listen(3000, () => console.log(`Running!`));
 }
